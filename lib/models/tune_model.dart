@@ -7,8 +7,8 @@ class TuneModel {
 
   const TuneModel({required this.color, required this.sound});
 
-  playSound() {
+  void playSound() async {
     final player = AudioPlayer();
-    player.play(AssetSource(sound));
+    await player.play(UrlSource('assets/$sound'));
   }
 }

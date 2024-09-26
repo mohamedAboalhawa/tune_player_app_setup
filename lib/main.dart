@@ -1,8 +1,11 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:music_notes_player_app_setup/views/tune_view.dart';
 
 void main() {
-  runApp(const TuneApp());
+  runApp(DevicePreview(
+    builder: (context) => const TuneApp(),
+  ));
 }
 
 class TuneApp extends StatelessWidget {
@@ -10,9 +13,13 @@ class TuneApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return  MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: TuneView(),
+     locale: DevicePreview.locale(context),
+      builder: DevicePreview.appBuilder,
+      theme: ThemeData.light(),
+      darkTheme: ThemeData.dark(),
+      home:  const TuneView(),
     );
   }
 }
